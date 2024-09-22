@@ -85,7 +85,14 @@ const verifybtn=document.getElementById("verify");
 verifybtn.addEventListener("click",()=>{
 	let selected=document.querySelectorAll(".selected");
     result.style.visibility="visible";
-	result.innerText=(selected.length==2 && selected[0].classList.contains('identical') && selected[1].classList.contains('identical'))?" You are a human. Congratulations! ":"We can't verify you as a human. You selected the non-identical tiles.";
+	if(selected.length==2 && selected[0].classList.contains('identical') && selected[1].classList.contains('identical')){
+        result.innerText=" You are a human. Congratulations! ";
+        result.style.color="green";
+    }
+    else{
+        result.innerText="We can't verify you as a human. You selected the non-identical tiles.";
+        result.style.color="red";
+    }
 	reset();
     verifybtn.style.visibility="hidden";
 });
